@@ -50,14 +50,19 @@ def ACP(Z):
     tmp = Centerize(Z);
     tmp = Reduce(tmp);
 
+    size = np.shape(tmp);
+
     #SVD decomposition
     U, A, V = np.linalg.svd(tmp);
 
+    S = np.zeros(size[O], size[1])
+    S[:size[1], :size[1]] = np.diag(A);
+
     #Factorial coord of peoples (Scores)
-    Xi = np.dot(U, A);
+    Xi = np.dot(U, S);
 
     #Factorial coord of variables (loadings)
-    Phi = np.dot(V, A);
+    Phi = np.dot(V, np.transpose(A));
 
     return Xi, Phi;
 
