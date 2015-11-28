@@ -9,6 +9,7 @@ def Center(Z):
     n = len(Z);
     A = Z;
     p = 1.0/n;
+    X = zerop(n);
     for j in range(0, n):
         sum = 0.0;
         for i in range(0, n):
@@ -48,6 +49,9 @@ def Centerize(Z):
 
 Z = [[1,2,3,4,5],[1,2,3,4,5],[6,7,8,9,10],[2,4,3,5,8]];
 print Z;
-print "Center(Z): " center(Z);
-print "Variance(Z): " Variance(Z);
-print "Centerize(Z): " Centerize(Z);
+print "Center(Z): "
+print Center(Z);
+print "Variance(Z): "
+print Variance(Z);
+print "Centerize(Z): "
+print Centerize(Z);
