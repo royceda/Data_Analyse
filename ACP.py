@@ -33,6 +33,7 @@ def Variance(Z):
     return S
 
 
+
 def Centerize(Z):
     A = Z;
     n = len(Z);
@@ -77,7 +78,7 @@ def ACP(Z):
     #Factorial coord of variables (loadings)
     Phi = np.dot(V, np.transpose(S));
 
-    return Xi, Phi;
+    return Xi, Phi, A;
 
 
 
@@ -111,10 +112,17 @@ Xi = ACP(Z)[0];
 Phi = ACP(Z)[1];
 
 
-X =  [row[1] for row in Xi]
-Y =  [row[1] for row in Phi]
+#X =  [row[1] for row in Xi]
+#Y =  [row[1] for row in Phi]
+
+n = np.shape(Z)[0];
+X = np.zeros(n);
+
+for i in range (0, n):
+    X[i] = i+1;
+
 
 import matplotlib.pyplot as plt
-plt.plot(X, Y, 'ro')
-plt.axis([0, 2, 0, 5])
+plt.plot(X, ACP(Z)[0], 'ro')
+plt.axis([-20, 20, -10, 10])
 plt.show()
