@@ -56,7 +56,8 @@ def ACP(Z):
     U, A, V = np.linalg.svd(tmp);
 
     S = np.zeros(size[O], size[1])
-    S[:size[1], :size[1]] = np.diag(A);
+    mini = min(size[0], size[1]);
+    S[:mini, :mini ]= np.diag(A);
 
     #Factorial coord of peoples (Scores)
     Xi = np.dot(U, S);
