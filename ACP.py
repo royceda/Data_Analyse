@@ -9,7 +9,7 @@ def Center(Z):
     n = len(Z);
     A = Z;
     p = 1.0/n;
-    X = zerop(n);
+    X = np.zeros(n);
     for j in range(0, n):
         sum = 0.0;
         for i in range(0, n):
@@ -20,12 +20,12 @@ def Center(Z):
 "compute variance"
 def Variance(Z):
     n = len(Z);
-    X = center(Z);
-
+    X = Center(Z);
+    S = np.zeros(n);
     for j in range (0, n):
         sum = 0.0;
         for i in range(0,n):
-            sum += (Z[i][j] - centerize(Z))
+            sum += (Z[i][j] - X[j])
         S[j] = np.sqrt(sum);
     return S
 
@@ -33,7 +33,7 @@ def Variance(Z):
 def Centerize(Z):
     A = Z;
     n = len(Z);
-    X = center(Z);
+    X = Center(Z);
 
     for j in range (0, n):
         for i in range (0, n):
