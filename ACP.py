@@ -108,6 +108,10 @@ print ACP(Z)[0]
 print "Phi"
 print  ACP(Z)[1]
 
+print "A"
+print ACP(Z)[2]
+
+
 Xi = ACP(Z)[0];
 Phi = ACP(Z)[1];
 
@@ -123,6 +127,9 @@ for i in range (0, n):
 
 
 import matplotlib.pyplot as plt
-plt.plot(X, ACP(Z)[0], 'ro')
-plt.axis([-20, 20, -10, 10])
+plt.plot(X, ACP(Z)[2], 'ro')
+plt.plot( ACP(Z)[0], 'bo')
+plt.plot( ACP(Z)[1], 'go')
+
+plt.axis([-(n+2), n+2, -10, 10])
 plt.show()
