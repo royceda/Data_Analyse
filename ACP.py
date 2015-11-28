@@ -2,7 +2,7 @@
 
 import numpy as np
 import matplotlib as mp
-
+from numpy import linalg as la
 
 "Create the scalars which enable to centerize Z "
 def Center(Z):
@@ -41,6 +41,28 @@ def Centerize(Z):
     return A
 
 
+def Reduce(Z):
+    A = Z;
+    return A;
+
+
+def ACP(Z):
+    tmp = Centerize(Z);
+    tmp = Reduce(tmp);
+
+    #SVD decomposition
+    U, A, V = np.linalg.svd(tmp);
+
+    #Factorial coord of peoples (Scores)
+    Xi = np.dot(U, A);
+
+    #Factorial coord of variables (loadings)
+    Phi = np.dot(V, A);
+
+    return Xi, Phi;
+
+
+
 
 
 
@@ -55,3 +77,6 @@ print "Variance(Z): "
 print Variance(Z);
 print "Centerize(Z): "
 print Centerize(Z);
+
+
+ACP(Z)
